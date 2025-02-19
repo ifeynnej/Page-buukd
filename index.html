@@ -1,6 +1,53 @@
 
-// Given data array
-const data = [{
+let counter = 0
+
+// function to make our code more maintainable 
+
+function addDivElement(idx){
+    const div = page.createElement('div')
+    const h2 = page.createElement('h2')
+    h2.textContent = info[idx].name + ' by ', info[idx].artist
+    const description = page.createElement('p')
+    description.textContent = info[idx].description
+
+    const pic = page.createElement('img')
+    pic.src = data[idx].url
+    pic.alt = data[idx].alt
+    pic.referrerPolicy = "no-referrer"
+    pic.width = 80
+
+    div.appendChild(h2)
+    div.appendChild(description)
+    div.appendChild(pic)
+
+    if (idx+1 != info.length){
+        div.appendChild(document.createElement('hr'))
+    }
+
+    document.querySelector('main').appendChild(div)
+}
+
+for (const item of info) {
+
+    addDivElement(counter)
+
+    counter += 1
+
+}
+
+
+document.querySelector('body').style.backgroundColor = "orange"
+document.querySelector('main').style.display = "flex"
+document.querySelector('main').style.flexWrap = "wrap"
+document.querySelector('h1').style.flexBasis = '70%'
+
+document.querySelectorAll('div').forEach((item) =>{
+    item.style.width = "40%"
+})
+
+
+//Data Array//
+const info = [{
     name: 'Homenaje a la Neurocirugía',
     artist: 'Marta Colvin Andrade',
     description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
@@ -74,52 +121,4 @@ const data = [{
     alt: 'A group of bronze hippo sculptures emerging from the sett sidewalk as if they were swimming.'
 }];
 
-// counter variable
-let counter = 0
-
-// function to make our code more maintainable 
-
-function addDivElement(idx){
-    const div = document.createElement('div')
-    const h2 = document.createElement('h2')
-    h2.textContent = data[idx].name + ' by ', data[idx].artist
-    const description = document.createElement('p')
-    description.textContent = data[idx].description
-
-    const image = document.createElement('img')
-    image.src = data[idx].url
-    image.alt = data[idx].alt
-    image.referrerPolicy = "no-referrer"
-    image.width = 120
-
-    div.appendChild(h2)
-    div.appendChild(description)
-    div.appendChild(image)
-
-    if (idx+1 != data.length){
-        div.appendChild(document.createElement('hr'))
-    }
-
-    document.querySelector('main').appendChild(div)
-}
-
-// Looping through the data and doign the DOM manipulation within the addDivElement function
-
-for (const item of data) {
-
-    addDivElement(counter)
-
-    counter += 1
-
-}
-
-
-document.querySelector('body').style.backgroundColor = "pink"
-document.querySelector('main').style.display = "flex"
-document.querySelector('main').style.flexWrap = "wrap"
-document.querySelector('h1').style.flexBasis = '100%'
-
-document.querySelectorAll('div').forEach((item) =>{
-    item.style.width = "30%"
-})
 
